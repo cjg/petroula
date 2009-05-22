@@ -29,8 +29,8 @@ namespace GradsViewer
 
         protected string GMap1_MoveEnd(object s, GAjaxServerEventArgs e)
         {
-            
-            return "alert('lon: " + GMap1.GCenter.lng + " lat: " + GMap1.GCenter.lat + "')";
+            Label1.Text = GMap1.
+            return "";
         }
 
         protected string GMap1_DragEnd(object s, GAjaxServerEventArgs e)
