@@ -1,8 +1,8 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <StartArguments>c:\test.db2 clflo clfmi clfhi c:\dati</StartArguments>
+    <StartArguments>c:\test.db2 clflo clfmi clfhi rainc c:\dati</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <StartArguments>c:\test.db2 clflo clfmi clfhi c:\dati</StartArguments>
+    <StartArguments>c:\test.db2 clflo clfmi clfhi rainc c:\dati</StartArguments>
   </PropertyGroup>
 </Project>
