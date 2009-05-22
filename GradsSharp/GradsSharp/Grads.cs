@@ -59,6 +59,8 @@ namespace GradsSharp
 
             tempPrefix = appSettings.Get("TempPrefix");
             cmd = appSettings.Get("GradsCommand");
+            if (cmd == null)
+                cmd = "C:\\grads-2.0.a5\\bin\\grads.exe";
             gadDir = appSettings.Get("GradsEnvironment");
             scriptsDir = appSettings.Get("GradsScripts");
 

@@ -49,9 +49,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\GradsLibrary\GradsLibrary\GradsLibrary.csproj">
-      <Project>{B0014C7C-BAAD-4953-B138-02F097BC3399}</Project>
-      <Name>GradsLibrary</Name>
+    <ProjectReference Include="..\..\GradsSharp\GradsSharp\GradsSharp.csproj">
+      <Project>{D64A71DE-18B6-4B15-9586-30930FA20D5A}</Project>
+      <Name>GradsSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
