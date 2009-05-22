@@ -1,0 +1,10 @@
+!#; AutoClass C model file -- extension .model
+!#; the following chars in column 1 make the line a comment:
+!#; '!', '#', ';', ' ', and '\n' (empty line)
+
+;; 1 or more model definitions
+;; model_index <zero_based index> <number of model definition lines>
+model_index 0 2
+single_multinomial default
+single_multinomial default
+single_multinomial default
