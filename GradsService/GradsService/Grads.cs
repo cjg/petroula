@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -27,12 +26,14 @@ public class Grads
         mutex = new object();
         process = new Process();
         log = new StreamWriter("C:\\Grads.txt", true);
-        process.StartInfo.FileName = "C:\\grads-2.0.a2\\bin\\grads.exe";
+        process.StartInfo.FileName = "C:\\grads-2.0.a5\\bin\\grads.exe";
         process.StartInfo.Arguments = "-lbu";
         process.StartInfo.RedirectStandardError = true;
         process.StartInfo.RedirectStandardInput = true;
         process.StartInfo.RedirectStandardOutput = true;
+        process.StartInfo.WorkingDirectory = "C:\\grads-2.0.a5\\bin\\";
         process.StartInfo.UseShellExecute = false;
+        process.StartInfo.CreateNoWindow = true;
         process.Start();
         CommandOutput co = new CommandOutput(process.StandardOutput);
         foreach (string s in co.OutputArray)
@@ -90,7 +91,8 @@ public class Grads
         if (instance == null)
         {
             instance = new Grads();
-            instance.Open("c:\\file\\file.ctl");
+            // da rimuovere
+            instance.Open("c:\\dati\\dati.ctl");
         }
         return instance;
     }
@@ -135,14 +137,23 @@ public class Grads
 
     public double Amean(string var)
     {
-        CommandOutput co1 = IssueCommand("set gxout c:\\output.txt");
-        CommandOutput co = IssueCommand("display aave(" + var 
+        CommandOutput co = IssueCommand("display amean(" + var 
             + ", x=" + x.Start 
             + ", x=" + x.End
             + ", y=" + y.Start 
             + ", y=" + y.End + ")");
         if (co.ResultCode != 0)
             throw new Exception("Cannot compute the amean!");
-        return 0;
+        foreach (string s in co.OutputArray)
+        {
+            try
+            {
+                return double.Parse(s);
+            }
+            catch (FormatException e)
+            {
+            }
+        }
+        throw new Exception("Cannot compute the amean!");
     }
 }

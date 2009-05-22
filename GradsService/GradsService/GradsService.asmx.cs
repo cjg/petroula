@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -58,6 +59,23 @@ namespace GradsService
             g.Lat.Start = 40.5;
             g.Lat.End = 41;
             return "Amean: " + g.Amean("clflo");
+        }
+
+        [WebMethod]
+        public void CreateAutoclassDataFile(string filename)
+        {
+            Grads g = Grads.GetInstance();
+            StreamWriter sw = new StreamWriter(filename);
+            g.Lon.Start = 13.75;
+            g.Lon.End = 14.7;
+            g.Lat.Start = 40.5;
+            g.Lat.End = 41;
+            for (int i = 1; i < 25; i++)
+            {
+                g.T.Value = i;
+                sw.WriteLine(g.Amean("clflo") + "," + g.Amean("clfmi") + "," + g.Amean("clfhi"));
+            }
+            sw.Close();
         }
     }
 }

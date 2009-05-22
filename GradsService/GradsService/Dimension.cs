@@ -108,6 +108,21 @@ public class Dimension
         }
     }
 
+    public double Value
+    {
+        get { return start; }
+        set
+        {
+            CommandOutput co = grads.IssueCommand("set " + name + " " + value);
+            if (co.ResultCode != 0)
+                throw new Exception("Cannot set " + name + " to " + value);
+            start = value;
+            end = value;
+            if(DimensionChanged != null)
+                DimensionChanged(this);
+        }
+    }
+
     public override string ToString()
     {
             string s = "Dimension: " + name;

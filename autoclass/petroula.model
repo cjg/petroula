@@ -4,7 +4,5 @@
 
 ;; 1 or more model definitions
 ;; model_index <zero_based index> <number of model definition lines>
-model_index 0 2
-single_multinomial default
-single_multinomial default
-single_multinomial default
+model_index 0 1
+single_normal_cn 0 1 2
