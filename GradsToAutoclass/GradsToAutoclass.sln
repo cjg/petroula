@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradsToAutoclass", "GradsToAutoclass\GradsToAutoclass.csproj", "{1B0DE6FC-C1E7-4155-A4C7-5EB122F29A73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradsLibrary", "..\GradsLibrary\GradsLibrary\GradsLibrary.csproj", "{B0014C7C-BAAD-4953-B138-02F097BC3399}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{1B0DE6FC-C1E7-4155-A4C7-5EB122F29A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B0DE6FC-C1E7-4155-A4C7-5EB122F29A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B0DE6FC-C1E7-4155-A4C7-5EB122F29A73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0014C7C-BAAD-4953-B138-02F097BC3399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0014C7C-BAAD-4953-B138-02F097BC3399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0014C7C-BAAD-4953-B138-02F097BC3399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0014C7C-BAAD-4953-B138-02F097BC3399}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1B0DE6FC-C1E7-4155-A4C7-5EB122F29A73}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{D64A71DE-18B6-4B15-9586-30930FA20D5A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GradsToAutoclass</RootNamespace>
-    <AssemblyName>GradsToAutoclass</AssemblyName>
+    <RootNamespace>GradsSharp</RootNamespace>
+    <AssemblyName>GradsSharp</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,6 +35,9 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -45,14 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Result.cs" />
+    <Compile Include="Dimension.cs" />
+    <Compile Include="Dims.cs" />
+    <Compile Include="File.cs" />
+    <Compile Include="FileInfo.cs" />
+    <Compile Include="Files.cs" />
+    <Compile Include="Grads.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\GradsLibrary\GradsLibrary\GradsLibrary.csproj">
-      <Project>{B0014C7C-BAAD-4953-B138-02F097BC3399}</Project>
-      <Name>GradsLibrary</Name>
-    </ProjectReference>
+    <Compile Include="TimeSpan.cs" />
+    <Compile Include="Var.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
