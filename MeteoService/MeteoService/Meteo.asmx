@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="Meteo.asmx.cs" Class="MeteoService.Meteo" %>
