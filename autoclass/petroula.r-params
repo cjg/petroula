@@ -183,7 +183,7 @@
 !       if false, no output is directed to the screen.  Assuming log_file_p = true,
 !       output will be directed to the log file only.
 
-interactive_p = false
+#interactive_p = false
 !       if false, standard input is not queried each cycle for the character q.
 !       Thus either parameter max_n_tires or max_duration must be specified, or
 !       AutoClass will run forever.
@@ -210,6 +210,5 @@ break_on_warnings_p = false
 ;; force_new_search_p = false
 ;; max_duration = 120
 
-force_new_search_p = true
-max_n_tries = 250
-
+comment_data_headers_p = true
+report_mode = "data"
