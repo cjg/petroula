@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Temperatures">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="x1" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="y1" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="x2" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="y2" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_point" type="tns:ArrayOfDouble" />
+            <s:element minOccurs="0" maxOccurs="1" name="y_point" type="tns:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDouble">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="double" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TemperaturesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TemperaturesResult" type="tns:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Classes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x_point" type="tns:ArrayOfDouble" />
+            <s:element minOccurs="0" maxOccurs="1" name="y_point" type="tns:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClassesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Temperature">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="lat" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="lon" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TemperatureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TemperatureResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TemperaturesSoapIn">
+    <wsdl:part name="parameters" element="tns:Temperatures" />
+  </wsdl:message>
+  <wsdl:message name="TemperaturesSoapOut">
+    <wsdl:part name="parameters" element="tns:TemperaturesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassesSoapIn">
+    <wsdl:part name="parameters" element="tns:Classes" />
+  </wsdl:message>
+  <wsdl:message name="ClassesSoapOut">
+    <wsdl:part name="parameters" element="tns:ClassesResponse" />
+  </wsdl:message>
+  <wsdl:message name="TemperatureSoapIn">
+    <wsdl:part name="parameters" element="tns:Temperature" />
+  </wsdl:message>
+  <wsdl:message name="TemperatureSoapOut">
+    <wsdl:part name="parameters" element="tns:TemperatureResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MeteoSoap">
+    <wsdl:operation name="Temperatures">
+      <wsdl:input message="tns:TemperaturesSoapIn" />
+      <wsdl:output message="tns:TemperaturesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Classes">
+      <wsdl:input message="tns:ClassesSoapIn" />
+      <wsdl:output message="tns:ClassesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Temperature">
+      <wsdl:input message="tns:TemperatureSoapIn" />
+      <wsdl:output message="tns:TemperatureSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MeteoSoap" type="tns:MeteoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Temperatures">
+      <soap:operation soapAction="http://tempuri.org/Temperatures" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Classes">
+      <soap:operation soapAction="http://tempuri.org/Classes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Temperature">
+      <soap:operation soapAction="http://tempuri.org/Temperature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MeteoSoap12" type="tns:MeteoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Temperatures">
+      <soap12:operation soapAction="http://tempuri.org/Temperatures" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Classes">
+      <soap12:operation soapAction="http://tempuri.org/Classes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Temperature">
+      <soap12:operation soapAction="http://tempuri.org/Temperature" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Meteo">
+    <wsdl:port name="MeteoSoap" binding="tns:MeteoSoap">
+      <soap:address location="http://localhost:2740/Meteo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MeteoSoap12" binding="tns:MeteoSoap12">
+      <soap12:address location="http://localhost:2740/Meteo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
