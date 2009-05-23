@@ -60,7 +60,7 @@ namespace GradsSharp
             tempPrefix = appSettings.Get("TempPrefix");
             cmd = appSettings.Get("GradsCommand");
             if (cmd == null)
-                cmd = "C:\\grads-2.0.a5\\bin\\grads.exe";
+                cmd = "C:\\grads-2.0.a2\\bin\\grads.exe";
             gadDir = appSettings.Get("GradsEnvironment");
             scriptsDir = appSettings.Get("GradsScripts");
 
@@ -190,7 +190,10 @@ namespace GradsSharp
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             if (instance == null)
+            {
                 instance = new Grads();
+                instance.Open("C:\\file\\file.ctl", FileType.CTL);
+            }
             return instance;
         }
 

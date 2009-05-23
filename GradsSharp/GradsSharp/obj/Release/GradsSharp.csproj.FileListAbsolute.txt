@@ -5,3 +5,6 @@ C:\Documents and Settings\Administrator\Local Settings\Application Data\Temporar
 C:\Documents and Settings\Administrator\Local Settings\Application Data\Temporary Projects\GradsSharp\obj\Release\GradsSharp.pdb
 C:\Documents and Settings\Administrator\Desktop\petroula\GradsSharp\GradsSharp\obj\Release\ResolveAssemblyReference.cache
 C:\Documents and Settings\Administrator\Desktop\petroula\GradsSharp\GradsSharp\obj\Release\GradsSharp.dll
+C:\Documents and Settings\Administrator\Desktop\petroula\GradsSharp\GradsSharp\bin\Release\GradsSharp.dll
+C:\Documents and Settings\Administrator\Desktop\petroula\GradsSharp\GradsSharp\bin\Release\GradsSharp.pdb
+C:\Documents and Settings\Administrator\Desktop\petroula\GradsSharp\GradsSharp\obj\Release\GradsSharp.pdb
