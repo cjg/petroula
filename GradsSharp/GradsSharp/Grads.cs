@@ -17,8 +17,6 @@ namespace GradsSharp
         public enum GxOutType { Vector, Shaded, Contour, Print, Custom};
         private Process process;
 
-        //private String path = "c:\\ProgramFile\\grads\\bin\\grads.exe";
-                
         private String scratchDir="";
         private String cmd;// = "c:\\ProgramFile\\grads\\bin\\grads.exe";//
         private String tempPrefix;// = "\\tmp";
@@ -60,7 +58,7 @@ namespace GradsSharp
             tempPrefix = appSettings.Get("TempPrefix");
             cmd = appSettings.Get("GradsCommand");
             if (cmd == null)
-                cmd = "C:\\grads-2.0.a2\\bin\\grads.exe";
+                cmd = "C:\\grads-2.0.a5\\bin\\grads.exe";
             gadDir = appSettings.Get("GradsEnvironment");
             scriptsDir = appSettings.Get("GradsScripts");
 
