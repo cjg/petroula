@@ -14,7 +14,6 @@ namespace GradsToAutoclass
         static void Main(string[] args)
         {
             int nvar = int.Parse(ConfigurationSettings.AppSettings["NVars"]);
-            /*
             Grads g = Grads.GetInstance();
             DirectoryInfo root = new DirectoryInfo(ConfigurationSettings.AppSettings["CtlDirectory"]);
             StreamWriter sw = new StreamWriter(ConfigurationSettings.AppSettings["DB2Filename"]);
@@ -46,7 +45,6 @@ namespace GradsToAutoclass
                 }
             }
             sw.Close();
-             */
             Process p = new Process();
             p.StartInfo.FileName = ConfigurationSettings.AppSettings["AutoclassExe"];
             p.StartInfo.Arguments = "-search " + ConfigurationSettings.AppSettings["DB2Filename"] + " "
@@ -70,22 +68,6 @@ namespace GradsToAutoclass
             p.Start();
             p.WaitForExit();
             Console.WriteLine(p.ExitCode);
-/*
-            StreamWriter sw = new StreamWriter("C:\\tmp.db2");
-            sw.WriteLine("0.014341 0.00346944 0 1000 81.0826");
-            sw.Close();
-            p = new Process();
-            p.StartInfo.FileName = ConfigurationSettings.AppSettings["AutoclassExe"];
-            p.StartInfo.Arguments = "-predict C:\\tmp.db2 "
-                + ConfigurationSettings.AppSettings["HD2Filename"].Replace(".hd2", ".results-bin") + " "
-                + ConfigurationSettings.AppSettings["HD2Filename"].Replace(".hd2", ".search") + " "
-                + ConfigurationSettings.AppSettings["RParamsFilename"];
-            p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.UseShellExecute = false;
-            p.Start();
-            Console.WriteLine(p.StandardOutput.ReadToEnd());
-            Console.Read();
- * */
         }
     }
 }
