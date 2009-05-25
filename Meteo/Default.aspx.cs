@@ -81,7 +81,7 @@ public partial class _Default : System.Web.UI.Page
             x_points[i] = Map1.Center.Longitude + x[i] * xscale;
             y_points[i] = Map1.Center.Latitude + y[i] * yscale;
         }
-        Meteo m = new Meteo();
+        localhost.Meteo m = new localhost.Meteo();
         string[] c = m.Classes(x_points, y_points);
         for (int i = 0; i < c.Length; i++)
         {

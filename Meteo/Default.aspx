@@ -16,7 +16,8 @@
         <table>
         <tr>
         <td>
-            <ve:Map ID="Map1" runat="server" Height="400px" Width="400px" ZoomLevel="4" />
+            <ve:Map ID="Map1" runat="server" Height="400px" Width="400px" ZoomLevel="4" 
+                Center-Latitude="40.7" Center-Longitude="14.2" />
             </td>
             <td>
             <table>
