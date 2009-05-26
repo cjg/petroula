@@ -10,8 +10,8 @@ number_of_attributes 5
 separator_char  ' '
 
 ;; <zero-based att#>  <att_type>  <att_sub_type>  <att_description>  <att_param_pairs>
-0 real scalar "Low Cloud Fraction" zero_point 0.0 rel_error 0.01
-1 real scalar "Middle Cloud Fraction" zero_point 0.0 rel_error 0.01
-2 real scalar "High Cloud Fraction" zero_point 0.0 rel_error 0.01
-3 real scalar "Model pressure" zero_point 0.0 rel_error 0.01
-4 real scalar "Relative Humidity" zero_point 0.0 rel_error 0.01
+0 real scalar "Sea Level Pressure" zero_point 0.0 rel_error 0.01
+1 real scalar "Sea Level Pressure Diff 24" zero_point 0.0 rel_error 0.01
+1 real scalar "Sea Level Pressure Diff 18" zero_point 0.0 rel_error 0.01
+1 real scalar "Sea Level Pressure Diff 12" zero_point 0.0 rel_error 0.01
+1 real scalar "Sea Level Pressure Diff 6" zero_point 0.0 rel_error 0.01

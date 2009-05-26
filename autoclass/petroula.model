@@ -4,6 +4,5 @@
 
 ;; 1 or more model definitions
 ;; model_index <zero_based index> <number of model definition lines>
-model_index 0 2
-ignore 3
-single_normal_cn 0 1 2 4 
+model_index 0 1
+single_normal_cn 0 1 2 3 4 
