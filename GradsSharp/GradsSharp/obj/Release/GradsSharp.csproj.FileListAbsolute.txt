@@ -13,3 +13,4 @@ C:\petroula\GradsSharp\GradsSharp\bin\Release\GradsSharp.pdb
 C:\petroula\GradsSharp\GradsSharp\obj\Release\ResolveAssemblyReference.cache
 C:\petroula\GradsSharp\GradsSharp\obj\Release\GradsSharp.dll
 C:\petroula\GradsSharp\GradsSharp\obj\Release\GradsSharp.pdb
+C:\petroula\GradsSharp\GradsSharp\bin\Release\GradsSharp.dll.config

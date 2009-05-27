@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
+using System.Configuration;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -35,8 +36,6 @@ namespace GradsSharp
         private GxOutType gxouttype;
         private string gxoutcustom;
 
-        private static Grads instance;
-
         public static String RandFilename(String prefix, String suffix) 
         {
             String result=null;
@@ -50,7 +49,7 @@ namespace GradsSharp
             return result;
         }
 
-        private Grads()
+        public Grads()
 	    {
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             NameValueCollection appSettings = System.Web.Configuration.WebConfigurationManager.AppSettings;
@@ -137,6 +136,27 @@ namespace GradsSharp
             }
         }
 
+        public DateTime Time
+        {
+            get 
+            {
+                double tset = T.Value;
+                Result r = Tell("set T 1");
+                string tmp = r.Output[0].Replace("\n", "").Trim();
+                string[] s = tmp.Substring(tmp.LastIndexOf(' ') + 1).Split(':');
+                Tell("set T " + tset);
+                DateTime d = new DateTime(int.Parse(s[0]), int.Parse(s[1]), int.Parse(s[2]), int.Parse(s[3]), 0, 0);
+                d.AddHours(tset - 1);
+                return d;
+            }
+            set 
+            {
+                DateTime start = this.Time;
+                System.TimeSpan t = value.Subtract(this.Time);
+                this.T.Value = t.Hours + 1;
+            }
+        }
+
         public GxOutType GxOut {
             get {
                 return gxouttype;
@@ -184,17 +204,6 @@ namespace GradsSharp
             }
         }
 
-        public static Grads GetInstance()
-        {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
-            if (instance == null)
-            {
-                instance = new Grads();
-                instance.Open("C:\\file\\file.ctl", FileType.CTL);
-            }
-            return instance;
-        }
-
         public Result Tell(string command)
         {
             lock (mutex)
@@ -209,6 +218,7 @@ namespace GradsSharp
 
         public void Open(String filename, FileType filetype)
         {
+            Tell("close 1");
             Result co;
             switch (filetype)
             {
@@ -242,6 +252,26 @@ namespace GradsSharp
 
             t = new Dimension("T", this);
             fileinfo = null;
+        }
+
+        public void Open(string ctl_directory, string ctl_prefix, DateTime time)
+        {
+            DirectoryInfo root = new DirectoryInfo(ctl_directory);
+            string found = null;
+            foreach (System.IO.FileInfo f in root.GetFiles())
+            {
+                if (!f.Extension.Equals(".ctl") || !f.Name.StartsWith(ctl_prefix))
+                    continue;
+                string[] d = f.Name.Replace(".ctl", "").Replace(ctl_prefix, "").Replace("_", "-").Split('-');
+                DateTime t = new DateTime(int.Parse(d[0]), int.Parse(d[1]), int.Parse(d[2]), int.Parse(d[3]), 
+                    int.Parse(d[4]), int.Parse(d[5]));
+                if (t.CompareTo(time) > 0)
+                    break;
+                found = f.Name;
+            }
+            if (found == null)
+                throw new Exception("Cannot find Ctl file for " + time.ToString());
+            Open(ctl_directory + "\\" + found, FileType.CTL);
         }
 
         public double Amean(string var)
@@ -338,7 +368,6 @@ namespace GradsSharp
             Result co = Tell("quit");
             if(co.Status != 0)
                 throw new Exception("Cannot quit!");
-            instance = null;
         }
     }
 }
