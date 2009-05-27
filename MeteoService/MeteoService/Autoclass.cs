@@ -28,13 +28,17 @@ namespace MeteoService
             return result;
         }
 
-        public string Classify(double lat, double lon)
+        public string Classify(double lat, double lon, DateTime starttime, DateTime endtime)
         {
-            Grads g = Grads.GetInstance();
+            Grads g = new Grads();
+            g.Open(appsettings["CtlDirectory"], appsettings["CtlPrefix"], starttime);
             g.Lat.Start = lat - 0.1;
             g.Lat.End = lat + 0.1;
             g.Lon.Start = lon - 0.1;
             g.Lon.End = lon + 0.1;
+            System.TimeSpan diff 
+            DateTime midtime = starttime.A
+            g.Time = starttime;
             int nvars = int.Parse(appsettings.Get("NVars"));
             string row = "";
             for (int i = 0; i < nvars; i++)
