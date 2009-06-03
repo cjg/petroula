@@ -9,6 +9,7 @@ namespace GradsSharp
         private bool varying;
         private double start;
         private double end;
+        private double limit;
         private Grads grads;
 
         public delegate void DimensionEventHandler(Dimension source);
@@ -22,6 +23,17 @@ namespace GradsSharp
             if (co.Status != 0)
                 throw new Exception("Cannot query grads!");
             parse_output(co.Output);
+            co = grads.Tell("q file");
+            limit = -1;
+            foreach (string s in co.Output)
+            {
+                if (!s.Contains(name + "size"))
+                    continue;
+                string tmp = s.Substring(s.IndexOf(name));
+                tmp = tmp.Substring(tmp.IndexOf("= ") + 2);
+                tmp = tmp.Substring(0, tmp.IndexOf(" "));
+                limit = double.Parse(tmp);
+            }
         }
 
         public void OnDimensionChanged(Dimension source)
@@ -89,6 +101,8 @@ namespace GradsSharp
             get { return start; }
             set
             {
+                if (limit > 0 && (value <= 0 || value > limit))
+                    throw new Exception("Cannot set Start value " +  value + ": beyond the limit!");
                 Result co = grads.Tell("set " + name + " " + value + " " + End);
                 if (co.Status != 0)
                     throw new Exception("Cannot set " + name + " to " + value + " " + End);
@@ -102,6 +116,8 @@ namespace GradsSharp
             get { return end; }
             set
             {
+                if (limit > 0 && (value <= 0 || value > limit))
+                    throw new Exception("Cannot set End value " +  value + ": beyond the limit!");
                 Result co = grads.Tell("set " + name + " " + Start + " " + value);
                 if (co.Status != 0)
                     throw new Exception("Cannot set " + name + " to " + Start + " " + value);
@@ -115,6 +131,8 @@ namespace GradsSharp
             get { return start; }
             set
             {
+                if(limit > 0 && (value <= 0 || value > limit))
+                    throw new Exception("Cannot set value " +  value + ": beyond the limit!");
                 Result co = grads.Tell("set " + name + " " + value);
                 if (co.Status != 0)
                     throw new Exception("Cannot set " + name + " to " + value);

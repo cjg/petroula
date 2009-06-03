@@ -153,7 +153,7 @@ namespace GradsSharp
             {
                 DateTime start = this.Time;
                 System.TimeSpan t = value.Subtract(this.Time);
-                this.T.Value = t.Hours + 1;
+                this.T.Value = t.Days * 24 + t.Hours + 1;
             }
         }
 
@@ -218,7 +218,7 @@ namespace GradsSharp
 
         public void Open(String filename, FileType filetype)
         {
-            Tell("close 1");
+            Result c = Tell("close 1");
             Result co;
             switch (filetype)
             {
@@ -276,18 +276,20 @@ namespace GradsSharp
 
         public double Amean(string var)
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             Result co = Tell("display amean(" + var 
-                + ", x=" + x.Start 
-                + ", x=" + x.End
-                + ", y=" + y.Start 
-                + ", y=" + y.End + ")");
+                + ", lon=" + lon.Start
+                + ", lon=" + lon.End
+                + ", lat=" + lat.Start
+                + ", lat=" + lat.End + ")");
             if (co.Status != 0)
                 throw new Exception("Cannot compute the amean!");
             foreach (string s in co.Output)
             {
                 try
                 {
-                    return double.Parse(s);
+                    string tmp = s.Trim();
+                    return double.Parse(tmp);
                 }
                 catch (FormatException e)
                 {
